@@ -145,7 +145,7 @@ More parameter information please refer to `main.py`.
 We provide a complete command for training and testing MFND<sup>3</sup>R:
 
 ```
-python -u main.py --model <model> --mode <mode> --data <data> --root_path <root_path> --features <features> --input_len <input_len> --pred_len <pred_len> --ODA_layers <ODA_layers> --VRCA_layers <VRCA_layers> --d_model <d_model> --criterion <criterion> --learning_rate <learning_rate> --dropout <dropout> --batch_size <batch_size> --use_RevIN --train_epochs <train_epochs> --patience <patience> --itr <itr>
+python -u main.py --model <model> --mode <mode> --data <data> --root_path <root_path> --features <features> --input_len <input_len> --pred_len <pred_len> --ODA_layers <ODA_layers> --VRCA_layers <VRCA_layers> --d_model <d_model> --learning_rate <learning_rate> --dropout <dropout> --batch_size <batch_size> --use_RevIN --train_epochs <train_epochs> --patience <patience> --itr <itr>
 ```
 
 Here we provide a more detailed and complete command description for training and testing the model:
