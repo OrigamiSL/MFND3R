@@ -184,7 +184,7 @@ Here we provide a more detailed and complete command description for training an
 The experiment parameters of each data set are formated in the `MFND3R.sh` files in the directory `./scripts/`. You can refer to these parameters for experiments, and you can also adjust the parameters to obtain better mse and mae results or draw better prediction figures.
 
 <p align="center">
-<img src="./img/Multivariate.png" height = "500" alt="" align=center />
+<img src="./img/Multivariate.png" height = "800" alt="" align=center />
 <br><br>
 <b>Figure 2.</b> Multivariate forecasting results
 </p>
