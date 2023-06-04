@@ -313,7 +313,7 @@ Moreover, the default experiment settings/parameters of aforementioned ten basel
 <tr>
 <th>n_freq_downsample</th>
 <th>The number of stacks' coefficients</th>
-<th>[60, 8, 1]</th>
+<th>[64, 8, 1]</th>
 </tr>
 <tr>
 <th rowspan=6>FiLM</th>
