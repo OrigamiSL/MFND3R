@@ -137,6 +137,243 @@ Then you can get the folder tree shown as below:
 
 ```
 
+## Baseline
+We select eight typical deep time series forecasting models based on CNN (SCINet), RNN (LSTNet), GNN (GTA), Transformer (Non-stationary Transformer, PatchTST, Crossformer) and Perceptron/MLP (DLinear, FiLM) as baselines in multivariate forecasting experiments. Two traditional time series forecasting models {ARIMA, Simple Exponential Smooth (SES)} and two deep forecasting model (N-HiTS, discover_PLF) are chosen as additional baselines only when handling the univariate dataset M4. Their source codes origins are given below:
+
+| Baseline | Source Code |
+|:---:|:---:|
+| Non-stationary Transformer | [https://github.com/thuml/Nonstationary_Transformers](https://github.com/thuml/Nonstationary_Transformers) |
+| PatchTST | [https://github.com/yuqinie98/PatchTST](https://github.com/yuqinie98/PatchTST) |
+| Crossformer | [https://github.com/Thinklab-SJTU/Crossformer](https://github.com/Thinklab-SJTU/Crossformer) |
+| SCINet | [https://github.com/cure-lab/SCINet](https://github.com/cure-lab/SCINet) |
+| LSTNet | [https://github.com/laiguokun/LSTNet](https://github.com/laiguokun/LSTNet) |
+| discover_PLF | [https://github.com/houjingyi-ustb/discover_PLF](https://github.com/houjingyi-ustb/discover_PLF) | 
+| DLinear | [https://github.com/cure-lab/LTSF-Linear](https://github.com/cure-lab/LTSF-Linear) |
+| N-HiTS | [https://github.com/cchallu/n-hits](https://github.com/cchallu/n-hits) |
+| FiLM | [https://github.com/tianzhou2011/FiLM](https://github.com/tianzhou2011/FiLM) |
+| GTA | [https://github.com/ZEKAICHEN/GTA](https://github.com/ZEKAICHEN/GTA) |
+
+Moreover, the default experiment settings/parameters of aforementioned ten baselines are given below respectively:
+
+<table>
+<tr>
+<th>Baselines</th>
+<th>Settings/Parameters name</th>
+<th>Descriptions</th>
+<th>Default mechanisms/values</th>
+</tr>
+<tr>
+<th rowspan=7>Non-stationary Transformer</th>
+<th>d_model</th>
+<th>The number of hidden dimensions</th>
+<th>512</th>
+</tr>
+<tr>
+<th>d_ff</th>
+<th>Dimension of fcn</th>
+<th>2048</th>
+</tr>
+<tr>
+<th>n_heads</th>
+<th>The number of heads in multi-head attention mechanism</th>
+<th>8</th>
+</tr>
+<tr>
+<th>e_layers</th>
+<th>The number of encoder layers</th>
+<th>2</th>
+</tr>
+<tr>
+<th>d_layers</th>
+<th>The number of decoder layers</th>
+<th>1</th>
+</tr>
+<tr>
+<th>p_hidden_dims</th>
+<th>Hidden layer dimensions of projector (List)</th>
+<th>[128, 128]</th>
+</tr>
+<tr>
+<th>p_hidden_layers</th>
+<th>The number of hidden layers in projector</th>
+<th>2</th>
+</tr>
+<tr>
+<th rowspan=2>PatchTST</th>
+<th>patch_len</th>
+<th>Patch length</th>
+<th>16</th>
+</tr>
+<tr>
+<th>stride</th>
+<th>The stride length</th>
+<th>8</th>
+</tr>
+<tr>
+<th rowspan=2>discover_PLF</th>
+<th>hidden_size</th>
+<th>The number of hidden dimensions</th>
+<th>128</th>
+</tr>
+<tr>
+<th>num_layers</th>
+<th>The number of decoder layers</th>
+<th>1</th>
+</tr>
+<tr>
+<th rowspan=5>Crossformer</th>
+<th>seq_len</th>
+<th>Segment length (L_seq)</th>
+<th>6</th>
+</tr>
+<tr>
+<th>d_model</th>
+<th>The number of hidden dimensions</th>
+<th>64</th>
+</tr>
+<tr>
+<th>d_ff</th>
+<th>Dimension of fcn</th>
+<th>128</th>
+</tr>
+<tr>
+<th>n_heads</th>
+<th>The number of heads in multi-head attention mechanism</th>
+<th>2</th>
+</tr>
+<tr>
+<th>e_layers</th>
+<th>The number of encoder layers</th>
+<th>2</th>
+</tr>
+<tr>
+<th rowspan=3>SCINet</th>
+<th>hidden-size</th>
+<th>The number of hidden dimensions</th>
+<th>8</th>
+</tr>
+<tr>
+<th>levels</th>
+<th>SCINet block levels</th>
+<th>3</th>
+</tr>
+<tr>
+<th>stacks</th>
+<th>The number of SCINet blocks</th>
+<th>1</th>
+</tr>
+<tr>
+<th rowspan=5>LSTNet</th>
+<th>hidCNN</th>
+<th>The number of CNN hidden units</th>
+<th>100</th>
+</tr>
+<tr>
+<th>hidRNN</th>
+<th>The number of RNN hidden units</th>
+<th>100</th>
+</tr>
+<tr>
+<th>window</th>
+<th>Window size</th>
+<th>168</th>
+</tr>
+<tr>
+<th>CNN_kernel</th>
+<th>The kernel size of the CNN layers</th>
+<th>6</th>
+</tr>
+<tr>
+<th>hidSkip</th>
+<th>The skip-length Recurrent-skip layer</th>
+<th>24</th>
+</tr>
+<tr>
+<th>DLinear</th>
+<th>moving_avg</th>
+<th>The window size of moving average</th>
+<th>25</th>
+</tr>
+<tr>
+<th rowspan=4>N-HiTS</th>
+<th>n_pool_kernel_size</th>
+<th>Pooling kernel size</th>
+<th>[4, 4, 4]</th>
+</tr>
+<tr>
+<th>n_blocks</th>
+<th>The number of blocks in stacks</th>
+<th>[1, 1, 1]</th>
+</tr>
+<tr>
+<th>n_x_hidden</th>
+<th>Coefficients hidden dimensions</th>
+<th>512</th>
+</tr>
+<tr>
+<th>n_freq_downsample</th>
+<th>The number of stacks' coefficients</th>
+<th>[60, 8, 1]</th>
+</tr>
+<tr>
+<th rowspan=6>FiLM</th>
+<th>d_model</th>
+<th>The number of hidden dimensions</th>
+<th>512</th>
+</tr>
+<tr>
+<th>d_ff</th>
+<th>Dimension of fcn</th>
+<th>2048</th>
+</tr>
+<tr>
+<th>n_heads</th>
+<th>The number of heads in multi-head attention mechanism</th>
+<th>8</th>
+</tr>
+<tr>
+<th>e_layers</th>
+<th>The number of encoder layers</th>
+<th>2</th>
+</tr>
+<tr>
+<th>d_layers</th>
+<th>The number of decoder layers</th>
+<th>1</th>
+</tr>
+<tr>
+<th>modes1</th>
+<th>The number of Fourier modes to multiply</th>
+<th>32</th>
+</tr>
+<tr>
+<th rowspan=5>GTA</th>
+<th>d_model</th>
+<th>The number of hidden dimensions</th>
+<th>512</th>
+</tr>
+<tr>
+<th>d_ff</th>
+<th>Dimension of fcn</th>
+<th>2048</th>
+</tr>
+<tr>
+<th>n_heads</th>
+<th>The number of heads in multi-head attention mechanism</th>
+<th>8</th>
+</tr>
+<tr>
+<th>e_layers</th>
+<th>The number of encoder layers</th>
+<th>2</th>
+</tr>
+<tr>
+<th>d_layers</th>
+<th>The number of decoder layers</th>
+<th>1</th>
+</tr>
+</table>
+
 ## Usage
 Commands for training and testing MFND<sup>3</sup>R of all datasets are in `./scripts/MFND3R.sh`.
 
